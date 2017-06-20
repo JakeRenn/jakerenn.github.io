@@ -6,7 +6,8 @@ categories: Paper
 tags: CNN
 ---
 
-文章来源 [Deeply-Supervised CNN for Prostate Segmentation](https://arxiv.org/abs/1703.07523)
+文章来源 [Deeply-Supervised CNN for Prostate Segmentation](https://arxiv.org/abs/1703.07523){: .btn .btn--info}
+{% include toc %}
 
 ### 概要
 核磁共振图不清晰的边缘会导致诊断困难。为了克服这个问题，这篇Paper提出一个深度监督的卷积神经网络，使用它来更精确得对核磁共振图进行分割。对于其他网络，深度神经网络中深层的**特征图(feature map)**往往比原输入图片小，也就是分辨率低。为了更精确地分割图片，输出原图大小的特征图是十分有必要的。
@@ -21,14 +22,14 @@ tags: CNN
 3. 为了更好地帮助网络学习更加精确，使用残差信息（residual information）优化训练过程，也就是使用深度监督来监督模型的训练
 
 ### U-net
-![](https://raw.githubusercontent.com/JakeRenn/jakerenn.github.io/master/images/post-U_net.png)
+![](https://raw.githubusercontent.com/JakeRenn/jakerenn.github.io/master/images/post-U_net.png){: .align-center}
 U-net分为两部分
 
 * 左边，再分为4个stage，每个stage由两个3x3卷积层和一个ReLU组成，之后接一个2x2 max pooling
 * 右边，同样4个stage，每个stage包含两个操作，一个是上取样upsampling，另外一个是减少channels数和进行反卷积操作deconvolution。
 
 ### 深度监督CNN
-![](https://raw.githubusercontent.com/JakeRenn/jakerenn.github.io/master/images/post-U_net2.png)
+![](https://raw.githubusercontent.com/JakeRenn/jakerenn.github.io/master/images/post-U_net2.png){: .align-center}
 **网络结构**： 正如VGG所证明，特征表达的深度对于分类的准确度很有帮助。然而更深的网络往往带来两个瓶颈
 
 * 更深的网络代表更多的参数，也就倾向于过拟合(overfitting)，尤其是在训练样本不充足的情况下。
@@ -39,11 +40,24 @@ U-net分为两部分
 * 减少参数，降低计算资源的要求
 * 增加了网络的深度
 
+**网络总结**：网络分为两部分：  
+左边压缩模块
+
+  * 4个stage组成
+  * 每个stage由两个3x3卷积层，一个1x1卷积层和一个2x2 max_pooling层组成
+  * 第一个stage起始channel为64，经过4个stage后为512
+右边为上采样模块
+
+  * 卷积层的设置与压缩模块一样，但没有max_pooling层
+  * 从左到右前馈时，采取上采样和反卷积操作。
+
 ### 结果展示
-![](https://raw.githubusercontent.com/JakeRenn/jakerenn.github.io/master/images/post-U_net3.png)
+![](https://raw.githubusercontent.com/JakeRenn/jakerenn.github.io/master/images/post-U_net3.png){: .full}
 结果的优劣一目了然
-![](https://raw.githubusercontent.com/JakeRenn/jakerenn.github.io/master/images/post-U_net4.png)
+{: .text-center}
+![](https://raw.githubusercontent.com/JakeRenn/jakerenn.github.io/master/images/post-U_net4.png){: .full}
 从左到右分别分原图，标签，和深度监督CNN的各层特征
+{: .text-center}
 
 
 ## 总结
@@ -52,7 +66,7 @@ U-net分为两部分
 * 左边4个stage，称为压缩路径。在第一个stage的特征通道数(feature channels) 为64，之后每个stage后都加倍特征通道数，第四个stage通道数为512。在每个stage里面，使用两个3x3卷积层，一个1x1卷积层和一个2x2 max pooling。
 * 同样，右边4个stage，称为扩张路径。上取样特征，减半特征通道数和把卷积换成反卷积，其他操作一样。
 
-思想总结：
+
 
 * 运用了resNet的思想，把误差信息从高层传递到低层，加速和优化训练过程
 * 最终图像和原图大小一致，能够做到高分辨率的特征提取
