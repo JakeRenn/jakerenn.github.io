@@ -21,14 +21,14 @@ tags: CNN
 3. 为了更好地帮助网络学习更加精确，使用残差信息（residual information）优化训练过程，也就是使用深度监督来监督模型的训练
 
 ### U-net
-![](https://raw.githubusercontent.com/JakeRenn/master/img/post-U_net.png)
+![](https://raw.githubusercontent.com/JakeRenn/jakerenn.github.io/master/images/post-U_net.png)
 U-net分为两部分
 
 * 左边，再分为4个stage，每个stage由两个3x3卷积层和一个ReLU组成，之后接一个2x2 max pooling
 * 右边，同样4个stage，每个stage包含两个操作，一个是上取样upsampling，另外一个是减少channels数和进行反卷积操作deconvolution。
 
 ### 深度监督CNN
-![](https://raw.githubusercontent.com/JakeRenn/master/img/post-U_net2.png)
+![](https://raw.githubusercontent.com/JakeRenn/jakerenn.github.io/master/images/post-U_net2.png)
 **网络结构**： 正如VGG所证明，特征表达的深度对于分类的准确度很有帮助。然而更深的网络往往带来两个瓶颈
 
 * 更深的网络代表更多的参数，也就倾向于过拟合(overfitting)，尤其是在训练样本不充足的情况下。
@@ -40,9 +40,9 @@ U-net分为两部分
 * 增加了网络的深度
 
 ### 结果展示
-![](https://raw.githubusercontent.com/JakeRenn/master/img/post-U_net3.png)
+![](https://raw.githubusercontent.com/JakeRenn/jakerenn.github.io/master/images/post-U_net3.png)
 结果的优劣一目了然
-![](https://raw.githubusercontent.com/JakeRenn/master/img/post-U_net4.png)
+![](https://raw.githubusercontent.com/JakeRenn/jakerenn.github.io/master/images/post-U_net4.png)
 从左到右分别分原图，标签，和深度监督CNN的各层特征
 
 
