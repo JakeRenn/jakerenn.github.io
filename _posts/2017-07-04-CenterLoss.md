@@ -47,6 +47,8 @@ delta表示示性函数indicator function
 
 对于alpha和lambda的设置，可以参看一下实验结果
 ![](https://raw.githubusercontent.com/JakeRenn/jakerenn.github.io/master/images/post-CenterLoss/post-CenterLoss8.png){: .align-center}
+最后看一下使用Center Loss之后的特征分布式怎样的，同一颜色表示同一类，显然类内分布更加紧密了。
+![](https://raw.githubusercontent.com/JakeRenn/jakerenn.github.io/master/images/post-CenterLoss/post-CenterLoss9.png){: .align-center}
 
 ## 总结
 经本人测试，center loss还是比较有效的。而且contrastive loss 和triplet loss需要构建的组合类型会呈阶乘式增长。当然，也可以说不一定要穷尽所有构建训练样本的方式，只需要满足条件去小部分出来训练就足够了，不过根据前辈指点，triplet loss收敛还是需要比较长时间的。
