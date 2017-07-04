@@ -6,7 +6,7 @@ categories: Paper
 tags: Loss
 ---
 
-在图像分类中，常用的方法是使用softmax来得到seperable的特征，这种方法在测试集的类别属于训练集类别的子集的情况比较适用。然而，在人脸识别任务中，不可能把每个人的脸都作为一个类别来训练模型，这需要巨大的人力去收集如此庞大的数据。因此，更可行的方法是对比特征的差别。显然，特征仅仅是seperable是不够而，而且需要discriminative，也就是类间差距大，类内差距小。要实现这种训练方式，就需要用到本文所提出的center loss。
+在图像分类中，常用的方法是使用softmax来得到seperable的特征，这种方法在测试集的类别属于训练集类别的子集的情况比较适用。然而，在人脸识别任务中，不可能把每个人的脸都作为一个类别来训练模型，这需要巨大的人力去收集如此庞大的数据。因此，更可行的方法是对比特征的差别。显然，特征仅仅是seperable是不够的，而且需要discriminative，也就是类间差距大，类内差距小。要实现这种训练方式，就需要用到本文所提出的center loss。
 [A Discriminative Feature Learning Approach for Deep Face Recognition](http://ydwen.github.io/papers/WenECCV16.pdf)
 {% include toc %}
 
@@ -49,9 +49,9 @@ delta表示示性函数indicator function
 ![](https://raw.githubusercontent.com/JakeRenn/jakerenn.github.io/master/images/post-CenterLoss/post-CenterLoss8.png){: .align-center}
 
 ## 总结
-经本人测试，center loss还是比较有效的。而且稍微用脑子分析一下，contrastive loss 和triplet loss需要构建的组合类型会呈阶乘式增长。当然，也可以说不一定要穷尽所有构建训练样本的方式，只需要满足条件去小部分出来训练就足够了，不过根据高手交代，triplet loss收敛还是需要比较长时间的。
+经本人测试，center loss还是比较有效的。而且contrastive loss 和triplet loss需要构建的组合类型会呈阶乘式增长。当然，也可以说不一定要穷尽所有构建训练样本的方式，只需要满足条件去小部分出来训练就足够了，不过根据前辈指点，triplet loss收敛还是需要比较长时间的。
 
-center loss简单易用，也十分便于实现，使我们提高模型性能的好伙伴。
+center loss简单易用，也十分便于实现，我们提高模型性能的好伙伴。
 
 
 
