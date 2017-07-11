@@ -49,4 +49,4 @@ In this paper, we propose to incorporate convolutional neural network with a mul
 ### 传统的attention
 对于原文比较枯燥的公式，我这里用十分宏观的方式来介绍一下传统的attention，希望了解细节的同学可以看看原文。对于特征图进行一个线性变换和一次非线性变换，然后在特征图[H, W]上做softmax变换，得到attention map。最后用attention map和原图点乘得到输出。
 
-### Our Multi-Context Attention Model
+To be continued..
